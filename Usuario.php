@@ -13,12 +13,22 @@ class Usuario
 
     public function listarUsuarios()
     {
-        // Lógica para obtener todos los usuarios
+        $sql = "SELECT id, primer_nombre, segundo_nombre, primer_apellido, 
+        segundo_apellido, email, telefono, direccion FROM usuarios";
+
+        try {
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+        error_log("Error al listar usuarios: " . $e->getMessage());
+        return [];
+        }   
     }
 
     public function obtenerUsuario($id)
     {
-        // Lógica para obtener un usuario por ID
+           
     }
 
     public function crearUsuario()
