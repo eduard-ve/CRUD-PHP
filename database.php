@@ -3,7 +3,7 @@
 class Database
 {
     private string $host = 'localhost';
-    private string $db = 'usuarios_app';
+    private string $db = 'usuarios_db';
     private string $user = 'root';
     private string $pass = '';
     private PDO $conexion;
