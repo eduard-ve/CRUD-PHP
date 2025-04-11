@@ -28,7 +28,25 @@ class Usuario
 
     public function obtenerUsuario($id)
     {
-           
+        // Consulta SQL para obtener un usuario por su ID
+        $sql = "SELECT id, primer_nombre, segundo_nombre, primer_apellido, 
+                segundo_apellido, email, telefono, direccion, creado_en 
+                FROM usuarios WHERE id = :id";
+    
+        try {
+            // Preparar la consulta
+            $stmt = $this->conn->prepare($sql);
+            // Vincular el parámetro :id con el valor de $id
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            // Ejecutar la consulta
+            $stmt->execute();
+            // Retornar el resultado como un array asociativo
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            // Registrar el error en el log y devolver null
+            error_log("Error al obtener usuario: " . $e->getMessage());
+            return null;
+        }
     }
 
     public function crearUsuario()
