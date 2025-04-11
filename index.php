@@ -21,3 +21,18 @@ if ($usuario) {
     echo "No se encontró el usuario con ID: $id\n";
 }
 */
+
+/*
+$usuarioModel = new Usuario();
+
+// ID del usuario que quieres eliminar
+$id = 3;
+
+$resultado = $usuarioModel->eliminarUsuario($id);
+
+if ($resultado) {
+    echo "✅ Usuario con ID $id eliminado correctamente.";
+} else {
+    echo "❌ No se pudo eliminar el usuario con ID $id.";
+}
+    */
